@@ -117,13 +117,170 @@
     font-size: 24px;
     color: #4A150D;
     line-height: 100px;
+    font-weight: bold;
+}
+.hp{
+    color: #009768;
+}
+.ep{
+    color: #A473AE;
+}
+.sp{
+    color: #222E8A;
 }
 .screen{
     width: 100%;
     height: 250px;
 }
+.day-count{
+    width: 200px;
+    height: 65px;
+    background-color: rgba(240, 178, 83, 0.9);
+    text-align: center;
+    line-height: 65px;
+    font-family: 'Arima Madurai';
+    font-size: 24px;
+}
+.inv{
+    width: 100%;
+    height: 125px;
+}
+.inv-items{
+    width: 33%;
+    height: 125px;
+    float: right;
+    display: flex;
+    align-items: center;
+    background-color: #eee0b5;
+}
+.item{
+    height: 95px;
+    width: 25%;
+    margin: 0 auto;
+    position: relative;
+    background-color: rgba(240, 178, 83, 0.6);
+}
+.item:hover{
+    background-color: #f0b253;
+}
+.item-1{
+    background-image: url(img/meat.png);
+}
+.item-img{
+    height: 95px;
+    position: absolute;
+}
+.item-count{
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(238, 224, 181, 0.5);
+    font-family: 'Boogaloo';
+    font-size: 20px;
+}
 .action{
     width: 100%;
     height: 250px;
+}
+.action-list{
+    display: flex;
+}
+.action-link{
+    font-family: 'Boogaloo';
+    width: 24.85%;
+    height: 125px;
     background-color: rgba(238, 224, 181, 0.9);
+    border: 1px solid #eee0b5;
+    text-align: center;
+    line-height: 125px;
+    font-size: 40px;
+    color: #4A150D;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+}
+.action-link:hover{
+    cursor: pointer;
+    background-color: #4A150D;
+    color: #eee0b5;
+}
+.target-list{
+    display: flex;
+}
+.target{
+    width: 24.85%;
+    height: 250px;
+    border: 1px solid #eee0b5;
+    background-color: rgba(238, 224, 181, 0.9);
+    text-align: center;
+    font-family: 'Boogaloo';
+    color: #4A150D;
+    font-size: 20px;
+}
+.target-img{
+    height: 115px;
+    margin-top: 10px;
+}
+.hunt-title{
+    font-size: 24px;
+}
+.hunt-btn{
+    width: 50%;
+    height: 40px;
+    background-color: #f0b253;
+    margin: 0 auto ;
+    margin-top: 10px;
+    line-height: 40px;
+    border-radius: 100vh;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+}
+.hunt-btn:hover{
+    cursor: pointer;
+    background-color: #4A150D;
+    color: #f0b253;
+}
+.search-list{
+    width: 100%;
+    height: 250px;
+    display: flex;
+}
+.search-title{
+    font-size: 24px;
+}
+.scan{
+    width: 33%;
+    height: 250px;
+    border: 1px solid #eee0b5;
+    background-color: rgba(238, 224, 181, 0.9);
+    text-align: center;
+    font-family: 'Boogaloo';
+    color: #4A150D;
+    font-size: 20px;
+}
+.scan-img{
+    height: 100px;
+    margin-top: 15px;
+}
+.search-btn{
+    width: 50%;
+    height: 40px;
+    background-color: #f0b253;
+    margin: 0 auto ;
+    margin-top: 10px;
+    line-height: 40px;
+    border-radius: 100vh;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+}
+.search-btn:hover{
+    cursor: pointer;
+    background-color: #4A150D;
+    color: #f0b253;
 }

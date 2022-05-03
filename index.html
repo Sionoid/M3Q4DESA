@@ -9,7 +9,7 @@
     <title>7 day survival</title>
 </head>
 <body class="body">
-    <div id="start" class="container img-container start-container">
+    <!---<div id="start" class="container img-container start-container">
         <div class="start-area">
             <div class="title"><span class="title-main">7 day survival</span><br><span class="title-sub">Can you survive 7 days in nature?<br>Enjoy survival in 4 game mode</span></div>
             <div class="btn-start">Start Game</div>
@@ -20,7 +20,7 @@
         <div class="mode-container">Prey(Coming soon)<br>(Normal)</div>
         <div class="mode-container">Bacteria(Coming soon)<br>(Hard)</div>
         <div class="mode-container">?????(Coming soon)<br>(????)</div>
-    </div>
+    </div>--->
     <div id="game" class="container img-container game-container">
         <div class="header">
             <div class="hp parameter">HP <span class="hp-now">100</span>/100</div>
@@ -29,25 +29,35 @@
         </div>
         <div class="screen">
             <div class="day-count">
-
+                Day <span class="count-now">6</span> / 7</span>
             </div>
-            <div class="inv">
 
-            </div>
         </div>
         <div id="origin" class="action">
-            <div class="action-link"></div>
-            <div class="action-link"></div>
-            <div class="action-link"></div>
-            <div class="action-link"></div>
-            <div class="action-link"></div>
-            <div class="action-link"></div>
+            <div class="inv">
+                <div class="inv-items">
+                    <div class="item item-1"><img class="item-img" src="img/meat.png"><p class="item-count">×<span class="item-num item-1-num">17</span></p></div>
+                    <div class="item item-2"><img class="item-img" src="img/mushroom.png"><p class="item-count">×<span class="item-num item-2-num">99</span></p></div>
+                    <div class="item item-3"><img class="item-img" src="img/water.png"><p class="item-count">×<span class="item-num item-3-num">99</span></p></div>
+                </div>
+            </div>
+            <div class="action-list">
+                <div class="action-link">Hunt</div>
+                <div class="action-link">Search</div>
+                <div class="action-link">Skill</div>
+                <div class="action-link">Quit</div>
+            </div>
         </div>
-        <!---<div id="hunt" class="action">
-
-        </div>
-        <div id="search" class="action">
-
+        <!---<div id="hunt" class="action target-list">
+            <div class="target target-1"><img src="img/raccoon.png" class="target-img"><br><span class="hunt-title">Raccoon</span><br>Success Rate: <span>50</span>%<div class="hunt-btn">Hunt</div></div>
+            <div class="target target-2"><img src="img/deer.jpg" class="target-img"><br><span class="hunt-title">Deer</span><br>Success Rate: <span>65</span>%<div class="hunt-btn">Hunt</div></div>
+            <div class="target target-3"><img src="img/monkey.png" class="target-img"><br><span class="hunt-title">Monkey</span><br>Success Rate: <span>45</span>%<div class="hunt-btn">Hunt</div></div>
+            <div class="target target-4"><img src="img/fish.png" class="target-img"><br><span class="hunt-title">Fish</span><br>Success Rate: <span>75</span>%<div class="hunt-btn">Hunt</div></div>
+        </div>--->
+        <!---<div id="search" class="action search-list">
+            <div class="scan scan-s"><img src="img/small-scan.png" class="scan-img"><br><span class="search-title">Short Search</span><br>Search distance: 5km<div class="search-btn">Search</div></div>
+            <div class="scan scan-m"><img src="img/medium-scan.png" class="scan-img"><br><span class="search-title">Medium Search</span><br>Search distance: 10km<div class="search-btn">Search</div></div>
+            <div class="scan scan-l"><img src="img/wide-scan.png" class="scan-img"><br><span class="search-title">Wide Search</span><br>Search distance: 15km<div class="search-btn">Search</div></div>
         </div>--->
     </div>
     <div id="skill" class="container skill-container"></div>
