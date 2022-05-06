@@ -437,7 +437,7 @@
     font-size: 24px;
 }
 .skill-get-btn{
-    width: 50%;
+    width: 60%;
     height: 30px;
     margin: 0 auto;
     margin-top: 20px;
@@ -453,6 +453,16 @@
 .skill-get-btn:hover{
     cursor: pointer;
     background-color: #eee0b5;
+}
+.get-btn{
+    width: 60%;
+    height: 30px;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: #87775C;
+    color: #eee0b5;
+    line-height: 30px;
+    border-radius: 1vh;
 }
 .arrow{
     height: 100%;

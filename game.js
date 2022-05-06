@@ -90,7 +90,14 @@ $('.item-2-num').text(item2num);
 //water num
 var item3num = 0;
 $('.item-3-num').text(item3num);
-//action-end//
+//skill get
+var skill1get = false;
+var skill2get = false;
+var skill3get = false;
+var skill4get = false;
+var skill5get = false;
+
+//action-end
 
 $('.action-end').click(function(){
     if(daycount >= 7){
@@ -111,4 +118,61 @@ $('.action-end').click(function(){
         daycount = daycount + 1;
         $('.count-now').text(daycount);}
     };
+});
+
+//skill
+$('.skill-1-get').click(function(){
+    if(sp >= 1){
+        sp = sp - 1;
+        $('.sp-now').text(sp);
+        skill1get = true;
+        $('.skill-1').addClass("skill-get")
+        $('.skill-1-get').addClass("get-btn")
+        $('.skill-1-get').removeClass("skill-get-btn")
+        $('.skill-1-get').text('Researched');
+    }
+});
+$('.skill-2-get').click(function(){
+    if(sp >= 2 && skill1get === true){
+        sp = sp - 2;
+        $('.sp-now').text(sp);
+        skill2get = true;
+        $('.skill-2').addClass("skill-get")
+        $('.skill-2-get').addClass("get-btn")
+        $('.skill-2-get').removeClass("skill-get-btn")
+        $('.skill-2-get').text('Researched');
+    }
+});
+$('.skill-3-get').click(function(){
+    if(sp >= 3 && skill1get === true && skill2get === true){
+        sp = sp - 3;
+        $('.sp-now').text(sp);
+        skill3get = true;
+        $('.skill-3').addClass("skill-get")
+        $('.skill-3-get').addClass("get-btn")
+        $('.skill-3-get').removeClass("skill-get-btn")
+        $('.skill-3-get').text('Researched');
+    }
+});
+$('.skill-4-get').click(function(){
+    if(sp >= 4 && skill1get === true && skill2get === true && skill3get === true){
+        sp = sp - 4;
+        $('.sp-now').text(sp);
+        skill4get = true;
+        $('.skill-4').addClass("skill-get")
+        $('.skill-4-get').addClass("get-btn")
+        $('.skill-4-get').removeClass("skill-get-btn")
+        $('.skill-4-get').text('Researched');
+    }
+});
+$('.skill-5-get').click(function(){
+    if(sp >= 5 && skill1get === true && skill2get === true && skill3get === true && skill4get === true){
+        sp = sp - 5;
+        $('.sp-now').text(sp);
+        skill5get = true;
+        $('.skill-5').addClass("skill-get")
+        $('.skill-5-get').addClass("get-btn")
+        $('.skill-5-get').removeClass("skill-get-btn")
+        $('.skill-5-get').text('Researched');
+    }
 });
