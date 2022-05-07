@@ -168,45 +168,55 @@ function search(epUse,meatProb,meatNum,mushNum,waterNum,spNum){
         ep = ep - epUse;
         $('.ep-now').text(ep);
         hp = hp - 20;
-        $('.hp-now').text(hp);
-        var meatProbNum = Math.round(Math.random() * 100) + 1;
-        if(skill1get === true){
-            meatProb = meatProb + 5;
-        }
-        if(skill3get === true){
-            meatNum = meatNum + 1;
-            mushNum = mushNum + 1;
-            waterNum = waterNum + 1;
-        }
-        if(skill5get === true){
-            meatProb = meatProb + 2;
-        }
-        if(meatProbNum <= meatProb){
-            item1num = item1num + meatNum;
-            $('.item-1-num').text(item1num);
-            item2num = item2num + mushNum;
-            $('.item-2-num').text(item2num);
-            item3num = item3num + waterNum;
-            $('.item-3-num').text(item3num);
-            sp = sp + spNum;
-            $('.sp-now').text(sp);
-            $('.dialogue').html('<span>You have gotten ' +meatNum+ ' meat<br/>You have gotten ' +mushNum+ ' mushroom<br/>You have gotten ' +waterNum+ ' water <br/>You have gotten ' +spNum+ ' SP</span>');
+        if(hp <= 0){
+            $('.hp-now').text('0');
+            $('.dialogue').html('<span>You have died(´・ω・｀)<br/>Going back to start page</span>');
             $('.dialogue').show();
             setTimeout(function(){
                 $('.dialogue').hide();
-            },3000)
+                reset();
+           },3000);
         }else{
-            item2num = item2num + mushNum;
-            $('.item-2-num').text(item2num);
-            item3num = item3num + waterNum;
-            $('.item-3-num').text(item3num);
-            sp = sp + spNum;
-            $('.sp-now').text(sp);
-            $('.dialogue').html('<span>You have gotten ' +mushNum+ ' mushroom<br/>You have gotten ' +waterNum+ ' water <br/>You have gotten ' +spNum+ ' SP</span>');
-            $('.dialogue').show();
-            setTimeout(function(){
-                $('.dialogue').hide();
-            },3000)
+            $('.hp-now').text(hp);
+            var meatProbNum = Math.round(Math.random() * 100) + 1;
+            if(skill1get === true){
+                meatProb = meatProb + 5;
+            }
+            if(skill3get === true){
+                meatNum = meatNum + 1;
+                mushNum = mushNum + 1;
+                waterNum = waterNum + 1;
+            }
+            if(skill5get === true){
+                meatProb = meatProb + 2;
+            }
+            if(meatProbNum <= meatProb){
+                item1num = item1num + meatNum;
+                $('.item-1-num').text(item1num);
+                item2num = item2num + mushNum;
+                $('.item-2-num').text(item2num);
+                item3num = item3num + waterNum;
+                $('.item-3-num').text(item3num);
+                sp = sp + spNum;
+                $('.sp-now').text(sp);
+                $('.dialogue').html('<span>You have gotten ' +meatNum+ ' meat<br/>You have gotten ' +mushNum+ ' mushroom<br/>You have gotten ' +waterNum+ ' water <br/>You have gotten ' +spNum+ ' SP</span>');
+                $('.dialogue').show();
+                setTimeout(function(){
+                    $('.dialogue').hide();
+                },3000)
+            }else{
+                item2num = item2num + mushNum;
+                $('.item-2-num').text(item2num);
+                item3num = item3num + waterNum;
+                $('.item-3-num').text(item3num);
+                sp = sp + spNum;
+                $('.sp-now').text(sp);
+                $('.dialogue').html('<span>You have gotten ' +mushNum+ ' mushroom<br/>You have gotten ' +waterNum+ ' water <br/>You have gotten ' +spNum+ ' SP</span>');
+                $('.dialogue').show();
+                setTimeout(function(){
+                    $('.dialogue').hide();
+                },3000)
+            }
         }
     }else{
         $('.dialogue').html('<span>You do not have enough EP...(´・ω・｀)</span>');
