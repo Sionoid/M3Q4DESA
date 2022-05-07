@@ -62,8 +62,18 @@ function hunt(damageRate,minDamage,maxDamage,getRate,minGet,maxGet){
         $('.ep-now').text(ep);
         var damageRateNum = Math.round(Math.random() * 100) + 1;
         var damageNum = Math.round(Math.random() * (maxDamage - minDamage)) + minDamage;
+        var getRateNum = Math.round(Math.random() * 100) + 1;
+        if(skill2get === true){
+            getRate = getRate + 3;
+        }
+        if(skill4get === true){
+            damageRate = damageRate - 5;
+        }
+        if(skill5get === true){
+            getRate = getRate + 2;
+        }
         if (damageRateNum <= damageRate){
-            console.log(damageNum);
+            //damage
             hp = hp - damageNum;
             if(hp <= 0){
                 $('.hp-now').text('0');
@@ -75,9 +85,11 @@ function hunt(damageRate,minDamage,maxDamage,getRate,minGet,maxGet){
                },1500);
             }else{
                 $('.hp-now').text(hp);
-                var getRateNum = Math.round(Math.random() * 100) + 1;
                 if (getRateNum <= getRate){
                     meatGet = Math.round(Math.random() * (maxGet - minGet)) + minGet;
+                    if(skill3get === true){
+                        meatGet = meatGet + 1;
+                    }
                     item1num = item1num + meatGet;
                     $('.item-1-num').text(item1num);
                     $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have gotten ' + meatGet + ' meat!(*・ω・*)</span>');
@@ -94,22 +106,23 @@ function hunt(damageRate,minDamage,maxDamage,getRate,minGet,maxGet){
                 }
             }
         }else{
-            hp = hp - damageNum;
-            if(hp <= 0){
-                $('.hp-now').text('0');
-                $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have died(´・ω・｀)<br/>Going back to start page</span>');
+            //no damage
+            if (getRateNum <= getRate){
+                meatGet = Math.round(Math.random() * (maxGet - minGet)) + minGet;
+                item1num = item1num + meatGet;
+                $('.item-1-num').text(item1num);
+                $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have gotten ' + meatGet + ' meat!(*・ω・*)</span>');
                 $('.dialogue').show();
                 setTimeout(function(){
                     $('.dialogue').hide();
-                    reset();
                },1500);
             }else{
-                $('.hp-now').text(hp);
-                $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have failed to get hunt...(´・ω・｀)</span>');
+                $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have failed to get meat...(´・ω・｀)</span>');
                 $('.dialogue').show();
                 setTimeout(function(){
                     $('.dialogue').hide();
-                },1500)}
+               },1500);
+            }
         }
     }else{
         $('.dialogue').html('<span>You do not have enough EP...(´・ω・｀)</span>');
@@ -125,6 +138,17 @@ function search(epUse,meatProb,meatNum,mushNum,waterNum,spNum){
         ep = ep - epUse;
         $('.ep-now').text(ep);
         var meatProbNum = Math.round(Math.random() * 100) + 1;
+        if(skill1get === true){
+            meatProb = meatProb + 5;
+        }
+        if(skill3get === true){
+            meatNum = meatNum + 1;
+            mushNum = mushNum + 1;
+            waterNum = waterNum + 1;
+        }
+        if(skill5get === true){
+            meatProb = meatProb + 2;
+        }
         if(meatProbNum <= meatProb){
             item1num = item1num + meatNum;
             $('.item-1-num').text(item1num);
