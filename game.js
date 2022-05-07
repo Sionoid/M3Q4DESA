@@ -90,6 +90,33 @@ function hunt(damageRate,minDamage,maxDamage,getRate,minGet,maxGet){
     }
 }
 
+function search(epUse,meatProb,meatNum,mushNum,waterNum,spNum){
+    if(ep >= epUse){
+        ep = ep - epUse;
+        $('.ep-now').text(ep);
+        var meatProbNum = Math.round(Math.random() * 100) + 1;
+        if(meatProbNum <= meatProb){
+            $('.dialogue').html('<span>You have gotten ' +meatNum+ ' meat<br/>You have gotten ' +mushNum+ ' mushroom<br/>You have gotten ' +waterNum+ ' water <br/>You have gotten ' +spNum+ ' SP</span>');
+            $('.dialogue').show();
+            setTimeout(function(){
+                $('.dialogue').hide();
+            },1500)
+        }else{
+            $('.dialogue').html('<span>You have gotten ' +mushNum+ ' mushroom<br/>You have gotten ' +waterNum+ ' water <br/>You have gotten ' +spNum+ ' SP</span>');
+            $('.dialogue').show();
+            setTimeout(function(){
+                $('.dialogue').hide();
+            },1500)
+        }
+    }else{
+        $('.dialogue').html('<span>You do not have enough EP...(´・ω・｀)</span>');
+        $('.dialogue').show();
+        setTimeout(function(){
+            $('.dialogue').hide();
+        },1500)
+    }
+}
+
 //start to mode//
 $(".btn-start").click(function(){
     $("#start").hide();
@@ -258,4 +285,15 @@ $('.hunt-m').click(function(){
 });
 $('.hunt-f').click(function(){
     hunt(25,0,20,10,3,10);
+});
+
+//search
+$('.search-s').click(function(){
+    search(5,0,1,1,2,1);
+});
+$('.search-m').click(function(){
+    search(10,1,1,2,3,2);
+});
+$('.search-l').click(function(){
+    search(15,3,1,3,4,3);
 });
