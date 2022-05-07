@@ -310,7 +310,7 @@ $('.action-end').click(function(){
         setTimeout(function(){
             $('.dialogue').hide();
             reset();
-        },1500)
+        },3000)
     }else{
         $('.dialogue').html('<span>Next day...</span>');
         $('.dialogue').show();
