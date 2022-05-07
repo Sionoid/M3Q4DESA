@@ -18,6 +18,78 @@ function reset(){
     $("#start").show();
 }
 
+function hp0(){
+    $('.dialogue').html('<span>You have died(´・ω・｀)<br/>Going back to start page</span>');
+    $('.dialogue').show();;
+    setTimeout(function(){
+        $('.dialogue').hide();
+        reset();
+   },1500);
+}
+
+function hunt(damageRate,minDamage,maxDamage,getRate,minGet,maxGet){
+    if(ep >= 5){
+        ep = ep - 5;
+        $('.ep-now').text(ep);
+        var damageRateNum = Math.round(Math.random() * 100) + 1;
+        var damageNum = Math.round(Math.random() * (maxDamage - minDamage)) + minDamage;
+        if (damageRateNum <= damageRate){
+            console.log(damageNum);
+            hp = hp - damageNum;
+            if(hp <= 0){
+                $('.hp-now').text('0');
+                $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have died(´・ω・｀)<br/>Going back to start page</span>');
+                $('.dialogue').show();
+                setTimeout(function(){
+                    $('.dialogue').hide();
+                    reset();
+               },1500);
+            }else{
+                $('.hp-now').text(hp);
+                var getRateNum = Math.round(Math.random() * 100) + 1;
+                if (getRateNum <= getRate){
+                    meatGet = Math.round(Math.random() * (maxGet - minGet)) + minGet;
+                    $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have gotten ' + meatGet + ' meat!(*・ω・*)</span>');
+                    $('.dialogue').show();
+                    setTimeout(function(){
+                        $('.dialogue').hide();
+                   },1500);
+                }else{
+                    $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have failed to get meat...(´・ω・｀)</span>');
+                    $('.dialogue').show();
+                    setTimeout(function(){
+                        $('.dialogue').hide();
+                   },1500);
+                }
+            }
+        }else{
+            hp = hp - damageNum;
+            if(hp <= 0){
+                console.log('<0');
+                $('.hp-now').text('0');
+                $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have died(´・ω・｀)<br/>Going back to start page</span>');
+                $('.dialogue').show();
+                setTimeout(function(){
+                    $('.dialogue').hide();
+                    reset();
+               },1500);
+            }else{
+                $('.hp-now').text(hp);
+                $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have failed to get hunt...(´・ω・｀)</span>');
+                $('.dialogue').show();
+                setTimeout(function(){
+                    $('.dialogue').hide();
+                },1500)}
+        }
+    }else{
+        $('.dialogue').html('<span>You do not have enough EP...(´・ω・｀)</span>');
+            $('.dialogue').show();
+            setTimeout(function(){
+            $('.dialogue').hide();
+        },1500)
+    }
+}
+
 //start to mode//
 $(".btn-start").click(function(){
     $("#start").hide();
@@ -32,6 +104,7 @@ $(".back-btn").click(function(){
 $(".mode-container-pred").click(function(){
     $("#mode").hide();
     $("#game").show();
+    $("#action").show();
     $("#hunt").hide();
     $("#search").hide();
 });
@@ -104,15 +177,11 @@ $('.action-end').click(function(){
         reset();
     }else{
         hp = hp - 25;
-        $('.hp-now').text(hp);
         if(hp <= 0){
-            $('.dialogue').html('<span>You have died<br/>Going back to start page</span>');
-            $('.dialogue').show();;
-            setTimeout(function(){
-                $('.dialogue').hide();
-                reset();
-           },1500);
+            $('.hp-now').text('0');
+            hp0();
         }else{
+        $('.hp-now').text(hp);
         ep = 20;
         $('.ep-now').text(ep);
         daycount = daycount + 1;
@@ -175,4 +244,18 @@ $('.skill-5-get').click(function(){
         $('.skill-5-get').removeClass("skill-get-btn")
         $('.skill-5-get').text('Researched');
     }
+});
+
+//hunt
+$('.hunt-r').click(function(){
+    hunt(50,10,30,70,2,4);
+});
+$('.hunt-d').click(function(){
+    hunt(25,0,45,70,1,5);
+});
+$('.hunt-m').click(function(){
+    hunt(65,5,40,55,3,6);
+});
+$('.hunt-f').click(function(){
+    hunt(25,0,20,10,3,10);
 });
