@@ -1,3 +1,32 @@
+//define
+//day count
+var daycount = 1;
+$('.count-now').text(daycount);
+//HP
+var hp = 100;
+$('.hp-now').text(hp);
+//EP
+var ep = 20;
+$('.ep-now').text(ep);
+//SP
+var sp = 0;
+$('.sp-now').text(sp);
+//meat num
+var item1num = 0;
+$('.item-1-num').text(item1num);
+//mushroom num
+var item2num = 0;
+$('.item-2-num').text(item2num);
+//water num
+var item3num = 0;
+$('.item-3-num').text(item3num);
+//skill get
+var skill1get = false;
+var skill2get = false;
+var skill3get = false;
+var skill4get = false;
+var skill5get = false;
+
 // function
 function reset(){
     daycount = 1;
@@ -8,11 +37,11 @@ function reset(){
     $('.ep-now').text(ep);
     sp = 0;
     $('.sp-now').text(sp);
-    var item1num = 0;
+    item1num = 0;
     $('.item-1-num').text(item1num);
-    var item2num = 0;
+    item2num = 0;
     $('.item-2-num').text(item2num);
-    var item3num = 0;
+    item3num = 0;
     $('.item-3-num').text(item3num);
     $("#game").hide();
     $("#start").show();
@@ -49,6 +78,8 @@ function hunt(damageRate,minDamage,maxDamage,getRate,minGet,maxGet){
                 var getRateNum = Math.round(Math.random() * 100) + 1;
                 if (getRateNum <= getRate){
                     meatGet = Math.round(Math.random() * (maxGet - minGet)) + minGet;
+                    item1num = item1num + meatGet;
+                    $('.item-1-num').text(item1num);
                     $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have gotten ' + meatGet + ' meat!(*・ω・*)</span>');
                     $('.dialogue').show();
                     setTimeout(function(){
@@ -65,7 +96,6 @@ function hunt(damageRate,minDamage,maxDamage,getRate,minGet,maxGet){
         }else{
             hp = hp - damageNum;
             if(hp <= 0){
-                console.log('<0');
                 $('.hp-now').text('0');
                 $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have died(´・ω・｀)<br/>Going back to start page</span>');
                 $('.dialogue').show();
@@ -96,12 +126,26 @@ function search(epUse,meatProb,meatNum,mushNum,waterNum,spNum){
         $('.ep-now').text(ep);
         var meatProbNum = Math.round(Math.random() * 100) + 1;
         if(meatProbNum <= meatProb){
+            item1num = item1num + meatNum;
+            $('.item-1-num').text(item1num);
+            item2num = item2num + mushNum;
+            $('.item-2-num').text(item2num);
+            item3num = item3num + waterNum;
+            $('.item-3-num').text(item3num);
+            sp = sp + spNum;
+            $('.sp-now').text(sp);
             $('.dialogue').html('<span>You have gotten ' +meatNum+ ' meat<br/>You have gotten ' +mushNum+ ' mushroom<br/>You have gotten ' +waterNum+ ' water <br/>You have gotten ' +spNum+ ' SP</span>');
             $('.dialogue').show();
             setTimeout(function(){
                 $('.dialogue').hide();
             },1500)
         }else{
+            item2num = item2num + mushNum;
+            $('.item-2-num').text(item2num);
+            item3num = item3num + waterNum;
+            $('.item-3-num').text(item3num);
+            sp = sp + spNum;
+            $('.sp-now').text(sp);
             $('.dialogue').html('<span>You have gotten ' +mushNum+ ' mushroom<br/>You have gotten ' +waterNum+ ' water <br/>You have gotten ' +spNum+ ' SP</span>');
             $('.dialogue').show();
             setTimeout(function(){
@@ -110,6 +154,37 @@ function search(epUse,meatProb,meatNum,mushNum,waterNum,spNum){
         }
     }else{
         $('.dialogue').html('<span>You do not have enough EP...(´・ω・｀)</span>');
+        $('.dialogue').show();
+        setTimeout(function(){
+            $('.dialogue').hide();
+        },1500)
+    }
+}
+
+function itemUse(itemName,itemNum,hpUp,itemClass){
+    if(itemNum === 0 || hp >= 100){
+        $('.dialogue').html('<span>You cannot use this item now!</span>');
+        $('.dialogue').show();
+        setTimeout(function(){
+            $('.dialogue').hide();
+        },1500)
+    }else{    
+        itemNum = itemNum - 1;
+        $(itemClass).text(itemNum);
+        if(itemName === 'meat'){
+            item1num = itemNum;
+        }else if(itemName === 'mushroom'){
+            item2num = itemNum;
+        }else if(itemName === 'water'){
+            item3num = itemNum;
+        }
+        hp = hp + hpUp;
+        $('.hp-now').text(hp);
+        if(hp > 100){
+            hp = 100;
+            $('.hp-now').text(hp);
+        }
+        $('.dialogue').html('<span>'+itemName+' used! +'+ hpUp +'HP</span>');
         $('.dialogue').show();
         setTimeout(function(){
             $('.dialogue').hide();
@@ -168,34 +243,7 @@ $(".return-btn").click(function(){
     $("#game").show();
 });
 
-//define
-//day count
-var daycount = 1;
-$('.count-now').text(daycount);
-//HP
-var hp = 100;
-$('.hp-now').text(hp);
-//EP
-var ep = 20;
-$('.ep-now').text(ep);
-//SP
-var sp = 15;
-$('.sp-now').text(sp);
-//meat num
-var item1num = 0;
-$('.item-1-num').text(item1num);
-//mushroom num
-var item2num = 0;
-$('.item-2-num').text(item2num);
-//water num
-var item3num = 0;
-$('.item-3-num').text(item3num);
-//skill get
-var skill1get = false;
-var skill2get = false;
-var skill3get = false;
-var skill4get = false;
-var skill5get = false;
+
 
 //action-end
 
@@ -296,4 +344,18 @@ $('.search-m').click(function(){
 });
 $('.search-l').click(function(){
     search(15,3,1,3,4,3);
+});
+
+//item use
+$('.item-1').click(function(){
+    console.log('use');
+    itemUse('meat',item1num,20,'.item-1-num');
+});
+$('.item-2').click(function(){
+    console.log('use');
+    itemUse('mushroom',item2num,10,'.item-2-num');
+});
+$('.item-3').click(function(){
+    console.log('use');
+    itemUse('water',item3num,5,'.item-3-num');
 });
