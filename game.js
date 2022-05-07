@@ -83,7 +83,7 @@ function hp0(){
     setTimeout(function(){
         $('.dialogue').hide();
         reset();
-   },1500);
+   },3000);
 }
 
 function hunt(damageRate,minDamage,maxDamage,getRate,minGet,maxGet){
@@ -112,7 +112,7 @@ function hunt(damageRate,minDamage,maxDamage,getRate,minGet,maxGet){
                 setTimeout(function(){
                     $('.dialogue').hide();
                     reset();
-               },1500);
+               },3000);
             }else{
                 $('.hp-now').text(hp);
                 if (getRateNum <= getRate){
@@ -126,13 +126,13 @@ function hunt(damageRate,minDamage,maxDamage,getRate,minGet,maxGet){
                     $('.dialogue').show();
                     setTimeout(function(){
                         $('.dialogue').hide();
-                   },1500);
+                   },3000);
                 }else{
                     $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have failed to get meat...(´・ω・｀)</span>');
                     $('.dialogue').show();
                     setTimeout(function(){
                         $('.dialogue').hide();
-                   },1500);
+                   },3000);
                 }
             }
         }else{
@@ -145,13 +145,13 @@ function hunt(damageRate,minDamage,maxDamage,getRate,minGet,maxGet){
                 $('.dialogue').show();
                 setTimeout(function(){
                     $('.dialogue').hide();
-               },1500);
+               },3000);
             }else{
                 $('.dialogue').html('<span>You have failed to get meat...(´・ω・｀)</span>');
                 $('.dialogue').show();
                 setTimeout(function(){
                     $('.dialogue').hide();
-               },1500);
+               },3000);
             }
         }
     }else{
@@ -159,7 +159,7 @@ function hunt(damageRate,minDamage,maxDamage,getRate,minGet,maxGet){
             $('.dialogue').show();
             setTimeout(function(){
             $('.dialogue').hide();
-        },1500)
+        },3000)
     }
 }
 
@@ -194,7 +194,7 @@ function search(epUse,meatProb,meatNum,mushNum,waterNum,spNum){
             $('.dialogue').show();
             setTimeout(function(){
                 $('.dialogue').hide();
-            },1500)
+            },3000)
         }else{
             item2num = item2num + mushNum;
             $('.item-2-num').text(item2num);
@@ -206,14 +206,14 @@ function search(epUse,meatProb,meatNum,mushNum,waterNum,spNum){
             $('.dialogue').show();
             setTimeout(function(){
                 $('.dialogue').hide();
-            },1500)
+            },3000)
         }
     }else{
         $('.dialogue').html('<span>You do not have enough EP...(´・ω・｀)</span>');
         $('.dialogue').show();
         setTimeout(function(){
             $('.dialogue').hide();
-        },1500)
+        },3000)
     }
 }
 
@@ -223,7 +223,7 @@ function itemUse(itemName,itemNum,hpUp,itemClass){
         $('.dialogue').show();
         setTimeout(function(){
             $('.dialogue').hide();
-        },1500)
+        },3000)
     }else{    
         itemNum = itemNum - 1;
         $(itemClass).text(itemNum);
@@ -244,7 +244,7 @@ function itemUse(itemName,itemNum,hpUp,itemClass){
         $('.dialogue').show();
         setTimeout(function(){
             $('.dialogue').hide();
-        },1500)
+        },3000)
     }
 }
 
@@ -316,7 +316,7 @@ $('.action-end').click(function(){
         $('.dialogue').show();
         setTimeout(function(){
             $('.dialogue').hide();
-        },1500)
+        },3000)
         hp = hp - 25;
         if(hp <= 0){
             $('.hp-now').text('0');
