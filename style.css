@@ -99,7 +99,7 @@
 .mode-container:hover{
     font-size: 36px;
     color: #4A150D;
-    background-color: rgba(238, 224, 181, 0.5); 
+    background-color: #eee0b5; 
     cursor: pointer;
 }
 .back-btn{
@@ -107,7 +107,7 @@
     height: 50px;
     text-align: center;
     line-height: 50px;
-    background-color: rgba(238, 224, 181, 0.5);
+    background-color: rgba(238, 224, 181, 0.7);
     font-family: 'Arima Madurai';
     color: #4A150D;
     font-size: 20px;
@@ -179,6 +179,21 @@
     font-size: 16px;
     border: 8px solid #a60;
     box-shadow: 2px 2px 4px rgba(256, 256, 256, 0.4), 2px 2px 2px rgba(0, 0, 0, 0.8) inset;
+}
+.dialogue-congrats{
+    margin: 0 auto;
+	font-size:64px;
+	text-align:center;
+    line-height:1;
+    font-weight: bold;
+	color: transparent;
+	background: repeating-linear-gradient(0deg, #C62828 8px, #EF5350 32px, #FFEBEE 40px, #EF5350 48px, #C62828 52px); 
+	-webkit-background-clip: text;
+}
+.dialogue-congrats-txt{
+    text-align: center;
+    font-size: 24px;
+    line-height:  1;
 }
 .inv{
     width: 100%;

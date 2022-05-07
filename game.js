@@ -45,6 +45,36 @@ function reset(){
     $('.item-3-num').text(item3num);
     $("#game").hide();
     $("#start").show();
+    if(skill1get === true){
+        $('.skill-1').removeClass("skill-get");
+        $('.skill-1-get').removeClass("get-btn");
+        $('.skill-1-get').addClass("skill-get-btn");
+    }   
+    if(skill2get === true){
+        $('.skill-2').removeClass("skill-get");
+        $('.skill-2-get').removeClass("get-btn");
+        $('.skill-2-get').addClass("skill-get-btn");
+    }   
+    if(skill3get === true){
+        $('.skill-3').removeClass("skill-get");
+        $('.skill-3-get').removeClass("get-btn");
+        $('.skill-3-get').addClass("skill-get-btn");
+    }   
+    if(skill4get === true){
+        $('.skill-4').removeClass("skill-get");
+        $('.skill-4-get').removeClass("get-btn");
+        $('.skill-4-get').addClass("skill-get-btn");
+    }   
+    if(skill5get === true){
+        $('.skill-5').removeClass("skill-get");
+        $('.skill-5-get').removeClass("get-btn");
+        $('.skill-5-get').addClass("skill-get-btn");
+    skill1get = false;
+    skill2get = false;
+    skill3get = false;
+    skill4get = false;
+    skill5get = false;
+    }   
 }
 
 function hp0(){
@@ -111,13 +141,13 @@ function hunt(damageRate,minDamage,maxDamage,getRate,minGet,maxGet){
                 meatGet = Math.round(Math.random() * (maxGet - minGet)) + minGet;
                 item1num = item1num + meatGet;
                 $('.item-1-num').text(item1num);
-                $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have gotten ' + meatGet + ' meat!(*・ω・*)</span>');
+                $('.dialogue').html('<span>You have gotten ' + meatGet + ' meat!(*・ω・*)</span>');
                 $('.dialogue').show();
                 setTimeout(function(){
                     $('.dialogue').hide();
                },1500);
             }else{
-                $('.dialogue').html('<span>You have taken ' + damageNum +' damage! <br/> You have failed to get meat...(´・ω・｀)</span>');
+                $('.dialogue').html('<span>You have failed to get meat...(´・ω・｀)</span>');
                 $('.dialogue').show();
                 setTimeout(function(){
                     $('.dialogue').hide();
@@ -137,6 +167,8 @@ function search(epUse,meatProb,meatNum,mushNum,waterNum,spNum){
     if(ep >= epUse){
         ep = ep - epUse;
         $('.ep-now').text(ep);
+        hp = hp - 20;
+        $('.hp-now').text(hp);
         var meatProbNum = Math.round(Math.random() * 100) + 1;
         if(skill1get === true){
             meatProb = meatProb + 5;
@@ -273,8 +305,18 @@ $(".return-btn").click(function(){
 
 $('.action-end').click(function(){
     if(daycount >= 7){
-        reset();
+        $('.dialogue').html('<p class="dialogue-congrats">Congratulation!!</p><p class="dialogue-congrats-txt">You have survived(*・ω・)</p>');
+        $('.dialogue').show();
+        setTimeout(function(){
+            $('.dialogue').hide();
+            reset();
+        },1500)
     }else{
+        $('.dialogue').html('<span>Next day...</span>');
+        $('.dialogue').show();
+        setTimeout(function(){
+            $('.dialogue').hide();
+        },1500)
         hp = hp - 25;
         if(hp <= 0){
             $('.hp-now').text('0');
@@ -347,39 +389,39 @@ $('.skill-5-get').click(function(){
 
 //hunt
 $('.hunt-r').click(function(){
-    hunt(50,10,30,70,2,4);
+    hunt(80,10,30,60,2,4);
 });
 $('.hunt-d').click(function(){
-    hunt(25,0,45,70,1,5);
+    hunt(55,0,45,60,1,5);
 });
 $('.hunt-m').click(function(){
-    hunt(65,5,40,55,3,6);
+    hunt(95,5,40,45,3,6);
 });
 $('.hunt-f').click(function(){
-    hunt(25,0,20,10,3,10);
+    hunt(55,0,20,10,3,10);
 });
 
 //search
 $('.search-s').click(function(){
-    search(5,0,1,1,2,1);
+    search(10,0,1,1,2,1);
 });
 $('.search-m').click(function(){
-    search(10,1,1,2,3,2);
+    search(15,1,1,2,3,2);
 });
 $('.search-l').click(function(){
-    search(15,3,1,3,4,3);
+    search(20,3,1,3,4,3);
 });
 
 //item use
 $('.item-1').click(function(){
     console.log('use');
-    itemUse('meat',item1num,20,'.item-1-num');
+    itemUse('meat',item1num,10,'.item-1-num');
 });
 $('.item-2').click(function(){
     console.log('use');
-    itemUse('mushroom',item2num,10,'.item-2-num');
+    itemUse('mushroom',item2num,5,'.item-2-num');
 });
 $('.item-3').click(function(){
     console.log('use');
-    itemUse('water',item3num,5,'.item-3-num');
+    itemUse('water',item3num,3,'.item-3-num');
 });
